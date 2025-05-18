@@ -231,14 +231,21 @@ void printHistory()
 
     fclose(arquivo);
 
+    printf("\n\nHISTORICO\n______________________________\n");
     for (int i = 0; i < 7; i++)
     {
         int win = atoi(vitorias[i]);
-        (i != 6) ? printf("%d. ", i + 1) : printf("Mortes. ");
+        (i != 6) ? printf("%d. ", i + 1) : printf("#. ");
         for (int j = 0; j < win; j++)
         {
             printf("=");
         }
+
+        for(int j = 0; j < 20 - win; j++)
+        {
+            printf(" ");
+        }
+        printf("%d", win);
         printf("\n");
         free(vitorias[i]);
         vitorias[i] = NULL;

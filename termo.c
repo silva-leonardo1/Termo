@@ -50,7 +50,7 @@ void palavraInput(char palavra[])
         do{
             scanf("%s", palavra);
 
-            if(strcmp(palavra, "1") == 0){
+            if(strcmp(palavra, "1") == 0 && vezesJogadas < 1){
                 printHistory(); 
                 exit(1);
             }    
@@ -59,6 +59,11 @@ void palavraInput(char palavra[])
             if(strlen(palavra) != 5) printf("A palavra precisa conter 5 letras\n-> ");
         }
         while(strlen(palavra) != 5);
+
+        for(int i = 0; i < strlen(palavra); i++)
+        {
+            palavra[i] = tolower(palavra[i]);
+        }
 
         FILE *arquivo = fopen("palavras.txt", "r");
         char buffer[256];
